@@ -6,8 +6,28 @@ myrobot:
 
   mobile_base_controller:
     type: "diff_drive_controller/DiffDriveController"
-    left_wheel: 'left_wheel_hinge'
-    right_wheel: 'right_wheel_hinge'
-    pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
-    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
+    publish_rate: 50 
+    left_wheel: ['front_left_wheel_hinge', 'rear_left_wheel_hinge', 'middle_left_wheel_hinge']
+    right_wheel: ['front_right_wheel_hinge', 'rear_right_wheel_hinge', 'middle_right_wheel_hinge']
+    pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 0.03]
+    twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 0.03]
+
+    
+    cmd_vel_timeout: 0.25
+    wheel_radius_multiplier: 1.0 
+    wheel_separation_multiplier: 1.0
+    
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 2.0   #m/s
+      has_acceleration_limits: true
+      max_acceleration       : 20.0   #m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 4.0   #rad/s
+      has_acceleration_limits: true
+      max_acceleration       : 25.0   #rad/s^2
+    
 
