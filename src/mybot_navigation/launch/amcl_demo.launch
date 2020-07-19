@@ -3,7 +3,7 @@
   <master auto="start"/>
 
   <!-- Map server -->
-  <arg name="map_file" default="$(find mybot_navigation)/maps/test_map.yaml"/>
+  <arg name="map_file" default="$(find mybot_navigation)/maps/laser_scan_map.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <!-- Place map frame at odometry frame -->
@@ -21,8 +21,6 @@
   </node>
   <!--include file="$(find amcl)/examples/amcl_omni.launch"/-->
 
-
-
   <!-- Move base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find mybot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -37,10 +35,7 @@
     <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
     <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
 
-
-
   </node>
-
 
 </launch>
 

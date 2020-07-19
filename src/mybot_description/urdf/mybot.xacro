@@ -3,7 +3,7 @@
 <robot name="myrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 	  <xacro:property name="cameraSize" value="0.03"/>
-  	  <xacro:property name="cameraMass" value="0.001"/>
+  	  <xacro:property name="cameraMass" value="0.0001"/>
 	  <xacro:include filename="$(find mybot_description)/urdf/mybot.gazebo" />
 	  <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
 	  <xacro:include filename="$(find mybot_description)/urdf/macros.xacro" />
@@ -13,17 +13,17 @@
     name="chassis">
     <inertial>
       <origin
-        xyz="0.059941 0.20387 0.20658"
+        xyz="0.018957 -0.0034534 0.20396"
         rpy="0 0 0" />
       <mass
-        value="1.00" />
+        value="0.6353" />
       <inertia
-        ixx="0.018662"
-        ixy="-4.5513E-05"
-        ixz="0.0009887"
-        iyy="0.022098"
-        iyz="0.0003587"
-        izz="0.02544" />
+        ixx="0.018752"
+        ixy="-1.3295E-05"
+        ixz="0.0012594"
+        iyy="0.022099"
+        iyz="0.0003545"
+        izz="0.02535" />
     </inertial>
     <visual>
       <origin
@@ -31,12 +31,10 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/chassis.STL" />
+          filename="package://mybot_description/meshes/chassis.dae" />
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.76863 0.77255 0.76863 1" />
+      <material name="">
+        <color rgba="0.43922 0.43922 0.43922 1" />
       </material>
     </visual>
     <collision>
@@ -44,8 +42,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://mybot_description/meshes/chassis.STL" />
+        <mesh filename="package://mybot_description/meshes/chassis.dae" />
       </geometry>
     </collision>
   </link>
@@ -53,16 +50,16 @@
     name="front_left_wheel">
     <inertial>
       <origin
-        xyz="0.0013314 -0.0015346 0.0015292"
+        xyz="-1.6838E-06 3.36E-07 6.9398E-05"
         rpy="0 0 1" />
       <mass
         value="0.15984" />
       <inertia
         ixx="0.00025061"
-        ixy="8.0674E-09"
-        ixz="6.7668E-07"
+        ixy="1.0824E-08"
+        ixz="5.5158E-09"
         iyy="0.0002506"
-        iyz="-7.9498E-07"
+        iyz="-2.2109E-08"
         izz="0.00044609" />
     </inertial>
     <visual>
@@ -71,7 +68,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/front_left_wheel.STL" />
+          filename="package://mybot_description/meshes/front_left_wheel.dae" />
       </geometry>
       <material
         name="">
@@ -85,7 +82,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/front_left_wheel.STL" />
+          filename="package://mybot_description/meshes/front_left_wheel.dae" />
       </geometry>
     </collision>
   </link>
@@ -93,8 +90,8 @@
     name="front_left_wheel_hinge"
     type="continuous">
     <origin
-      xyz="0.27982 0.38747 0.075206"
-      rpy="1.5708 -0.85568 3.1416" />
+      xyz="0.23232 0.18046 0.063906"
+      rpy="1.5708 -0.89583 3.1416" />
     <parent
       link="chassis" />
     <child
@@ -103,78 +100,22 @@
       xyz="0 0 1" />
     <limit
       effort="1000"
-      velocity="100" />
-  </joint>
-  <link
-    name="front_right_wheel">
-    <inertial>
-      <origin
-        xyz="9.3829E-05 0.00013114 -0.0013953"
-        rpy="0 0 1" />
-      <mass
-        value="0.15984" />
-      <inertia
-        ixx="0.00025061"
-        ixy="1.3407E-08"
-        ixz="-5.9803E-07"
-        iyy="0.0002506"
-        iyz="-8.4874E-07"
-        izz="0.00044609" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mybot_description/meshes/front_right_wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.1098 0.1098 0.1098 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mybot_description/meshes/front_right_wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="front_right_wheel_hinge"
-    type="continuous">
-    <origin
-      xyz="0.27982 0.030271 0.075206"
-      rpy="-1.5708 -0.94008 3.1416" />
-    <parent
-      link="chassis" />
-    <child
-      link="front_right_wheel" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      effort="1000"
-      velocity="100" />
+      velocity="1500" />
   </joint>
   <link
     name="middle_left_wheel">
     <inertial>
       <origin
-        xyz="-0.0019962 0.00018008 0.00032398"
+        xyz="-1.6618E-06 3.1989E-07 6.9398E-05"
         rpy="0 0 1" />
       <mass
         value="0.15984" />
       <inertia
-        ixx="0.00025062"
-        ixy="1.0458E-08"
-        ixz="-1.0139E-06"
+        ixx="0.00025061"
+        ixy="1.0825E-08"
+        ixz="5.5201E-09"
         iyy="0.0002506"
-        iyz="6.9819E-08"
+        iyz="-2.2123E-08"
         izz="0.00044609" />
     </inertial>
     <visual>
@@ -183,7 +124,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/middle_left_wheel.STL" />
+          filename="package://mybot_description/meshes/middle_left_wheel.dae" />
       </geometry>
       <material
         name="">
@@ -197,7 +138,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/middle_left_wheel.STL" />
+          filename="package://mybot_description/meshes/middle_left_wheel.dae" />
       </geometry>
     </collision>
   </link>
@@ -205,8 +146,8 @@
     name="middle_left_wheel_hinge"
     type="continuous">
     <origin
-      xyz="0.049624 0.38227 0.078035"
-      rpy="-1.5708 0.089887 0" />
+      xyz="0.0024254 0.17526 0.07597"
+      rpy="-1.5708 0.13003 0" />
     <parent
       link="chassis" />
     <child
@@ -215,78 +156,22 @@
       xyz="0 0 1" />
     <limit
       effort="1000"
-      velocity="100" />
-  </joint>
-  <link
-    name="middle_right_wheel">
-    <inertial>
-      <origin
-        xyz="-0.00011287 -0.00011306 -0.00019002"
-        rpy="0 0 1" />
-      <mass
-        value="0.15984" />
-      <inertia
-        ixx="0.00025061"
-        ixy="1.3463E-08"
-        ixz="7.2204E-07"
-        iyy="0.0002506"
-        iyz="7.0875E-07"
-        izz="0.00044609" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mybot_description/meshes/middle_right_wheel.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.1098 0.1098 0.1098 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://mybot_description/meshes/middle_right_wheel.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="middle_right_wheel_hinge"
-    type="continuous">
-    <origin
-      xyz="0.049624 0.03027 0.078035"
-      rpy="1.5708 0.79526 0" />
-    <parent
-      link="chassis" />
-    <child
-      link="middle_right_wheel" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      effort="1000"
-      velocity="100" />
+      velocity="1500" />
   </joint>
   <link
     name="rear_left_wheel">
     <inertial>
       <origin
-        xyz="-0.0020219 0.00018241 -0.0007759"
+        xyz="-1.6618E-06 3.1995E-07 6.9398E-05"
         rpy="0 0 1" />
       <mass
         value="0.15984" />
       <inertia
-        ixx="0.00025062"
-        ixy="1.0458E-08"
-        ixz="-1.0139E-06"
+        ixx="0.00025061"
+        ixy="1.0825E-08"
+        ixz="5.5202E-09"
         iyy="0.0002506"
-        iyz="6.9819E-08"
+        iyz="-2.2123E-08"
         izz="0.00044609" />
     </inertial>
     <visual>
@@ -295,7 +180,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/rear_left_wheel.STL" />
+          filename="package://mybot_description/meshes/rear_left_wheel.dae" />
       </geometry>
       <material
         name="">
@@ -309,7 +194,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/rear_left_wheel.STL" />
+          filename="package://mybot_description/meshes/rear_left_wheel.dae" />
       </geometry>
     </collision>
   </link>
@@ -317,8 +202,8 @@
     name="rear_left_wheel_hinge"
     type="continuous">
     <origin
-      xyz="-0.16042 0.38776 0.096966"
-      rpy="-1.5708 0.089887 0" />
+      xyz="-0.20669 0.18075 0.10332"
+      rpy="-1.5708 0.13003 0" />
     <parent
       link="chassis" />
     <child
@@ -327,22 +212,22 @@
       xyz="0 0 1" />
     <limit
       effort="1000"
-      velocity="100" />
+      velocity="1500" />
   </joint>
   <link
-    name="rear_right_wheel">
+    name="front_right_wheel">
     <inertial>
       <origin
-        xyz="-0.00013898 -7.3556E-05 0.00090978"
+        xyz="-1.6829E-06 3.3642E-07 6.9398E-05"
         rpy="0 0 1" />
       <mass
         value="0.15984" />
       <inertia
-        ixx="0.00025062"
-        ixy="1.2988E-08"
-        ixz="9.068E-07"
+        ixx="0.00025061"
+        ixy="1.0824E-08"
+        ixz="5.5162E-09"
         iyy="0.0002506"
-        iyz="4.6289E-07"
+        iyz="-2.2109E-08"
         izz="0.00044609" />
     </inertial>
     <visual>
@@ -351,7 +236,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/rear_right_wheel.STL" />
+          filename="package://mybot_description/meshes/front_right_wheel.dae" />
       </geometry>
       <material
         name="">
@@ -365,7 +250,119 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://mybot_description/meshes/rear_right_wheel.STL" />
+          filename="package://mybot_description/meshes/front_right_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_wheel_hinge"
+    type="continuous">
+    <origin
+      xyz="0.23232 -0.17674 0.063906"
+      rpy="-1.5708 -0.98023 3.1416" />
+    <parent
+      link="chassis" />
+    <child
+      link="front_right_wheel" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="1000"
+      velocity="1500" />
+  </joint>
+  <link
+    name="middle_right_wheel">
+    <inertial>
+      <origin
+        xyz="-1.6854E-06 3.3882E-07 6.9398E-05"
+        rpy="0 0 1" />
+      <mass
+        value="0.15984" />
+      <inertia
+        ixx="0.00025061"
+        ixy="1.0824E-08"
+        ixz="5.5158E-09"
+        iyy="0.0002506"
+        iyz="-2.2107E-08"
+        izz="0.00044609" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mybot_description/meshes/middle_right_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1098 0.1098 0.1098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mybot_description/meshes/middle_right_wheel.dae" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="middle_right_wheel_hinge"
+    type="continuous">
+    <origin
+      xyz="0.0024254 -0.17674 0.07597"
+      rpy="1.5708 0.8354 0" />
+    <parent
+      link="chassis" />
+    <child
+      link="middle_right_wheel" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="1000"
+      velocity="1500" />
+  </joint>
+  <link
+    name="rear_right_wheel">
+    <inertial>
+      <origin
+        xyz="-1.6748E-06 3.3089E-07 6.9397E-05"
+        rpy="0 0 1" />
+      <mass
+        value="0.15984" />
+      <inertia
+        ixx="0.00025061"
+        ixy="1.0824E-08"
+        ixz="5.5178E-09"
+        iyy="0.0002506"
+        iyz="-2.2114E-08"
+        izz="0.00044609" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mybot_description/meshes/rear_right_wheel.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.1098 0.1098 0.1098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mybot_description/meshes/rear_right_wheel.dae" />
       </geometry>
     </collision>
   </link>
@@ -373,8 +370,8 @@
     name="rear_right_wheel_hinge"
     type="continuous">
     <origin
-      xyz="-0.16042 0.03027 0.096966"
-      rpy="1.5708 0.49368 0" />
+      xyz="-0.20669 -0.17674 0.10332"
+      rpy="1.5708 0.53382 0" />
     <parent
       link="chassis" />
     <child
@@ -383,11 +380,8 @@
       xyz="0 0 -1" />
     <limit
       effort="1000"
-      velocity="100" />
+      velocity="1500" />
   </joint>
-
-
-
 
 
 
@@ -413,13 +407,13 @@
               <transparency>1</transparency>
 	      <origin xyz="0 0 0" rpy="0 0 0"/>
 	      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
-	      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+	      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 	    </inertial>
 	  </link>
 
 	  <joint name="camera_joint" type="fixed">
-	    <axis xyz="0 1 0" />
-	    <origin xyz="0.130 0.2109 0.249" rpy="0 0 0"/>
+	    <axis xyz="0 0 0" />
+	    <origin xyz="0.099 0.0 0.230" rpy="0 0 0"/>
 	    <parent link="chassis"/>
 	    <child link="camera"/>
             <material name="transparent"/>
@@ -428,8 +422,8 @@
 
 
 	  <joint name="hokuyo_joint" type="fixed">
-	    <axis xyz="0 1 0" />
-	    <origin xyz="0.085 0.205 0.290" rpy="0 0 0"/>
+	    <axis xyz="0 0 0" />
+	    <origin xyz="0.04 0.0 0.285" rpy="0 0 0"/>
 	    <parent link="chassis"/>
 	    <child link="hokuyo"/>
 	  </joint>
@@ -451,9 +445,9 @@
 	      </geometry>
 	    </visual>
 	    <inertial>
-	      <mass value="0.000001" />
+	      <mass value="0.000000001" />
 	      <origin xyz="0 0 0" rpy="0 0 0"/>
-	      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+	      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
 	    </inertial>
 	  </link>
 
